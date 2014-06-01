@@ -16,10 +16,10 @@
         'name' : 'Luboslava Dimitrova',
         'course' : 'Frontend JavaScript'
       }, {
-        'name' : 'Anton Antonov',
+        'name' : 'Nikola Dichev',
         'course' : 'Core Java'
       }, {
-        'name' : 'Nikola Dichev',
+        'name' : 'Anton Antonov',
         'course' : 'Core Java'
       }
     ]
@@ -43,9 +43,10 @@
     return groups;
   }
 
-  function printTable(arr){
-    var output = '';
-    output += '<tr><td>' + arr.join('</td></tr><tr><td>') + '</td></tr>';
+  function printTable(arr, group){
+    var output = '<table class="table table-striped table-boarded"><thead><tr><th>' + group + '</th></tr></thead>';
+      output += '<tr><td>' + arr.sort().join('</td></tr><tr><td>') + '</td></tr>';
+      output += '</table>';
     return output;
   }
 
@@ -53,11 +54,7 @@
       group;
 
   for (group in groups){
-    var output = '<table><thead><tr><th>' + group + '</th></tr></thead>';
-
-    var StudentsTable = printTable(groups[group]);
-
-    output += '</table>';
+    var StudentsTable = printTable(groups[group], group);
     $('#container').append(StudentsTable);
   }
 
